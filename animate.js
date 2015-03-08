@@ -53,6 +53,7 @@ function createSprite(data) {
 function setScale(value) {
   var canvas = this;
   var change = value/canvas.scale;
+  var ctx = canvas.getContext("2d");
   ctx.scale(value,value);
   canvas.scale = value;
 }
