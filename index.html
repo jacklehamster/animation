@@ -12,15 +12,15 @@
   }
   
   function switchLabel() {
+    document.getElementById("switchLabel").value = 'gotoAndPlay("'+sprite.label+'")';
     var newLabel = sprite.label=='running'?'still':'running';
     sprite.gotoAndPlay(newLabel);
-    document.getElementById("switchLabel").value = 'gotoAndPlay("'+newLabel+'")';
   }
   
   function switchDirection() {
+    document.getElementById("switchDirection").value = 'setDirection("'+sprite.direction+'")';
     var direction = sprite.direction==-1?1:-1;
     sprite.setDirection(direction);
-    document.getElementById("switchDirection").value = 'gotoAndPlay("'+direction+'")';
   }
 </script>
 
