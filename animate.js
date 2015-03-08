@@ -39,8 +39,7 @@ function createSprite(data) {
   canvas.next = next;
   canvas.show = show;
   canvas.setDirection = setDirection;
-  canvas.setScale = setScale;
-  
+
   canvas.interval = setInterval(
     function() {
         canvas.next();
@@ -49,18 +48,6 @@ function createSprite(data) {
   );
   
   return canvas;
-}
-
-function setScale(value) {
-  var canvas = this;
-  var change = value/canvas.scale;
-  if(change!=1) {
-    var ctx = canvas.getContext("2d");
-    ctx.scale(change,change);
-    canvas.width *= change;
-    canvas.height *= change;
-    canvas.scale = value;
-  }
 }
 
 function setDirection(dir) {
