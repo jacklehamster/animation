@@ -39,6 +39,7 @@ function createSprite(data) {
   canvas.next = next;
   canvas.show = show;
   canvas.setDirection = setDirection;
+  canvas.setScale = setScale;
   
   canvas.interval = setInterval(
     function() {
