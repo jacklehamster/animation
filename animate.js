@@ -8,8 +8,9 @@ function createSprite(data) {
   canvas.animations = animations;
   var count = 0;
   var maxX=0, maxY=0;
-  var firstLabel = null;
+  canvas.labels = [];
   for(var label in data) {
+    canvas.labels.push(label);
     animations[label] = [];
     for(var i=0;i<data[label].length;i++) {
       if(!canvas.label)
@@ -35,6 +36,7 @@ function createSprite(data) {
   canvas.gotoAndPlay = gotoAndPlay;
   canvas.next = next;
   canvas.show = show;
+  canvas.setDirection = setDirection;
   
   canvas.interval = setInterval(
     function() {
@@ -44,6 +46,19 @@ function createSprite(data) {
   );
   
   return canvas;
+}
+
+function setDirection(dir) {
+  var canvas = this;
+  var ctx = canvas.getContext("2d");
+  if(dir<0) {
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+  }
+  else {
+    ctx.translate(0, 0);
+    ctx.scale(1, 1);
+  }
 }
 
 function gotoAndPlay(label) {
