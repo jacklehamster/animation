@@ -40,10 +40,12 @@ function createSprite(data) {
   canvas.show = show;
   canvas.setDirection = setDirection;
 
+  var enterFrameEvent = new Event("enterFrame");
   canvas.interval = setInterval(
     function() {
         canvas.next();
         canvas.show();
+        canvas.dispatchEvent(enterFrameEvent);
     },30
   );
   
