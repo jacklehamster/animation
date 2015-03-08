@@ -16,6 +16,7 @@ function createSprite(data) {
         canvas.label = label;
       var src = data[label][i];
       var image = new Image();
+      animations[label].push(image);
       count++;
       image.addEventListener("load",
         function(e) {
