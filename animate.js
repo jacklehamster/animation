@@ -61,5 +61,5 @@ function show() {
   var canvas = this;
   var image = canvas.animations[canvas.label][canvas.index];
   var ctx = canvas.getContext("2d");
-  ctx.drawImage(image,0,0);
+//  ctx.drawImage(image,0,0);
 }
