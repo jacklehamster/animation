@@ -35,14 +35,14 @@ function createSprite(data) {
   canvas.gotoAndPlay = gotoAndPlay;
   canvas.next = next;
   canvas.show = show;
-  /*
+  
   canvas.interval = setInterval(
     function() {
         canvas.next();
         canvas.show();
     },30
   );
-  */
+  
   return canvas;
 }
 
@@ -50,6 +50,7 @@ function gotoAndPlay(label) {
   var canvas = this;
   canvas.label = label;
   canvas.index = 0;
+  canvas.show();
 }
 
 function next() {
@@ -62,5 +63,6 @@ function show() {
   var canvas = this;
   var image = canvas.animations[canvas.label][canvas.index];
   var ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.drawImage(image,0,0);
 }
