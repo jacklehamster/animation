@@ -4,6 +4,7 @@ function createSprite(data) {
 
   canvas.index = 0;
   canvas.direction = 1;
+  canvas.scale = 1;
 
   var animations = {};
   canvas.animations = animations;
@@ -47,6 +48,13 @@ function createSprite(data) {
   );
   
   return canvas;
+}
+
+function setScale(value) {
+  var canvas = this;
+  var change = value/canvas.scale;
+  ctx.scale(value,value);
+  canvas.scale = value;
 }
 
 function setDirection(dir) {
