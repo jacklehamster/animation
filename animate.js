@@ -54,14 +54,14 @@ function setDirection(dir) {
   if(canvas.direction*dir<0) {
     canvas.direction = dir;
     var ctx = canvas.getContext("2d");
-    if(dir<0) {
+//    if(dir<0) {
       ctx.translate(canvas.width, 0);
       ctx.scale(-1, 1);
-    }
-    else {
-      ctx.translate(-canvas.width, 0);
-      ctx.scale(-1, 1);
-    }
+//    }
+//    else {
+//      ctx.translate(-canvas.width, 0);
+//      ctx.scale(-1, 1);
+//    }
   }
 }
 
