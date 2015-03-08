@@ -1,6 +1,6 @@
 function createSprite(data) {
   
-  var canvas = document.createDocument("canvas");
+  var canvas = document.createElement("canvas");
 
   canvas.index = 0;
 
