@@ -3,6 +3,7 @@ function createSprite(data) {
   var canvas = document.createElement("canvas");
 
   canvas.index = 0;
+  canvas.direction = 1;
 
   var animations = {};
   canvas.animations = animations;
@@ -50,14 +51,17 @@ function createSprite(data) {
 
 function setDirection(dir) {
   var canvas = this;
-  var ctx = canvas.getContext("2d");
-  if(dir<0) {
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
-  }
-  else {
-    ctx.translate(0, 0);
-    ctx.scale(1, 1);
+  if(canvas.direction*dir<0) {
+    canvas.direction = dir;
+    var ctx = canvas.getContext("2d");
+    if(dir<0) {
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+    }
+    else {
+      ctx.translate(-canvas.width, 0);
+      ctx.scale(-1, 1);
+    }
   }
 }
 
