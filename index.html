@@ -10,10 +10,25 @@
     sprite = createSprite(dobukiDataURI);
     document.body.appendChild(sprite);
   }
+  
+  function switchLabel() {
+    var newLabel = sprite.label=='running'?'still':'running';
+    sprite.gotoAndPlay(newLabel);
+    document.getElementById("switchLabel").value = 'gotoAndPlay("'+newLabel+'")';
+  }
+  
+  function switchDirection() {
+    var direction = sprite.direction==-1?1:-1;
+    sprite.setDirection(direction);
+    document.getElementById("switchDirection").value = 'gotoAndPlay("'+direction+'")';
+  }
 </script>
 
 </head>
 <body style="margin:0px" onLoad="init()">
+<input type="button" id='switchLabel' value='gotoAndPlay("running")' onclick="switchLabel()">
+<input type="button" id='switchDirection' value='setDirection(-1)' onclick="switchDirection()">
+<hr>
 
 </body>
 </html>
