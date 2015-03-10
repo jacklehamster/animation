@@ -12,9 +12,11 @@
   }
   
   function switchLabel() {
-    document.getElementById("switchLabel").value = 'gotoAndPlay("'+sprite.label+'")';
     var newLabel = sprite.labels[(sprite.labels.indexOf(sprite.label)+1)%sprite.labels.length];
     sprite.gotoAndPlay(newLabel);
+    document.getElementById("switchLabel").value = 'gotoAndPlay("'+
+      sprite.labels[(sprite.labels.indexOf(newLabel)+1)%sprite.labels.length]+
+      '")';
   }
   
   function switchDirection() {
