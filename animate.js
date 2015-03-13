@@ -17,9 +17,19 @@ function createSprite(data) {
     for(var i=0;i<data[label].length;i++) {
       if(!canvas.label)
         canvas.label = label;
-      var src = data[label][i];
+      var obj = data[label][i];
+      if(typeof(obj)=="string") {
+          obj = {src:obj};
+      }
+      var src = obj.src;
+      var x = obj.x?obj.x:0;
+      var y = obj.y?obj.y:0;
       var image = new Image();
-      animations[label].push(image);
+      animations[label].push({
+        src:image,
+        x:x,
+        y:y
+      });
       count++;
       image.addEventListener("load",
         function(e) {
@@ -29,6 +39,10 @@ function createSprite(data) {
           maxY = Math.max(maxY,image.naturalHeight);
           canvas.width = maxX;
           canvas.height = maxY;
+          count--;
+          if(!count) {
+            canvas.dispatchEvent(new Event("loaded"));
+          }
         }
       );
       image.src = src;
@@ -77,8 +91,10 @@ function next() {
 
 function show() {
   var canvas = this;
-  var image = canvas.animations[canvas.label][canvas.index];
+  var animation = canvas.animations[canvas.label][canvas.index];
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.drawImage(image,0,0);
+  ctx.drawImage(animation.src,0,0);
+  canvas.style.marginLeft = animation.x+"px";
+  canvas.style.marginRight = animation.x+"px";
 }
